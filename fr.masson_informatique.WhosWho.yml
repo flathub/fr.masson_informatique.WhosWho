@@ -233,5 +233,5 @@ modules:
       - pip3 install --prefix=${FLATPAK_DEST} --no-deps .
     sources:
       - type: archive
-        url: https://framagit.org/Yvan-Masson/WhosWho/-/archive/v1.3/WhosWho-v1.3.tar.gz
-        sha256: eae9d9bd07f2c460e75f526a16e4809c9c3291f37360fa014b432da0e6802f96
+        url: https://framagit.org/Yvan-Masson/WhosWho/-/archive/v1.4/WhosWho-v1.4.tar.gz
+        sha256: e022b5053c41cf3e70d78ccc695983a5a1bfebf696b4d54a3dad4a2d02df8199
