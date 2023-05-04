@@ -21,8 +21,8 @@ modules:
       --prefix=${FLATPAK_DEST} "chardet" --no-build-isolation
     sources:
     - type: file
-      url: https://files.pythonhosted.org/packages/19/c7/fa589626997dd07bd87d9269342ccb74b1720384a4d739a1872bd84fbe68/chardet-4.0.0-py2.py3-none-any.whl
-      sha256: f864054d66fd9118f2e67044ac8981a54775ec5b67aed0441892edb553d21da5
+      url: https://files.pythonhosted.org/packages/74/8f/8fc49109009e8d2169d94d72e6b1f4cd45c13d147ba7d6170fb41f22b08f/chardet-5.1.0-py3-none-any.whl
+      sha256: 362777fb014af596ad31334fde1e8c327dfdb076e1960d1694662d46a6917ab9
     cleanup:
     - "/bin/*"
 
@@ -47,7 +47,6 @@ modules:
       sha256: 5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc
 
   # needed for opencv
-  # could not build 1.21.4 (see https://github.com/numpy/numpy/issues/21288)
   # recipe copied from Inkscape (https://github.com/flathub/org.inkscape.Inkscape/blob/483813e5626c5660f0ca1d1f505a92824e7f02f6/python3-numpy.json)
   - name: python3-numpy
     buildsystem: simple
