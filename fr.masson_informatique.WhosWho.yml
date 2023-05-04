@@ -219,8 +219,8 @@ modules:
     - "--without-x"
     sources:
     - type: archive
-      url: https://imagemagick.org/archive/releases/ImageMagick-7.1.0-35.tar.xz
-      sha256: 26063653de155bab820894e5216a38577420c4dfd59e784daca6601e37f294e0
+      url: https://imagemagick.org/archive/releases/ImageMagick-7.1.1-8.tar.xz
+      sha256: 05a24995cb4ad1c1185255fa0d65c24842a71972336cda20f9fbd330299d160a
     cleanup:
     - "/bin/MagickCore-config"
     - "/bin/MagickWand-config"
