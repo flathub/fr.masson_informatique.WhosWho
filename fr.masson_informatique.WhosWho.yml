@@ -198,6 +198,9 @@ modules:
     - type: file
       url: https://files.pythonhosted.org/packages/87/11/c82a6ec5f8e262cd547347c92258b82570dd1e57cca2b0c927af56c4f7ef/Willow-1.5-py3-none-any.whl
       sha256: 8f885ae0e8311ec45a943d5db2af77cc2b44d3c5ba4d6a053012a67e861ca829
+    - type: file
+      url: https://files.pythonhosted.org/packages/18/79/1b8fa1bb3568781e84c9200f951c735f3f157429f44be0495da55894d620/filetype-1.2.0-py2.py3-none-any.whl
+      sha256: 7ce71b6880181241cf7ac8697a2f1eb6a8bd9b429f7ad6d27b8db9ba5f1c2d25
 
   - name: imagemagick
     buildsystem: autotools
