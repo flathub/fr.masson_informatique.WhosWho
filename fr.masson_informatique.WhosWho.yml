@@ -147,8 +147,8 @@ modules:
     sources:
     - type: git
       url: https://github.com/Itseez/opencv.git
-      tag: 4.5.5
-      commit: dad26339a975b49cfb6c7dbe4bd5276c9dcb36e2
+      tag: 4.7.0
+      commit: 725e440d278aca07d35a5e8963ef990572b07316
     cleanup:
     - "/bin/*"
     - "/share/licenses/*"
