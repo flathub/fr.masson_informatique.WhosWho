@@ -193,8 +193,8 @@ modules:
       --prefix=${FLATPAK_DEST} "Willow" --no-build-isolation
     sources:
     - type: file
-      url: https://files.pythonhosted.org/packages/b5/bb/e654a03c8224b06f9e12381cd0c67028f460e625df55711f7ded30afcaf1/Willow-1.4.1-py2.py3-none-any.whl
-      sha256: fc4042696d090e75aef922fa1ed26d483c764f005b36cf523cf7c34e69d5dd7a
+      url: https://files.pythonhosted.org/packages/87/11/c82a6ec5f8e262cd547347c92258b82570dd1e57cca2b0c927af56c4f7ef/Willow-1.5-py3-none-any.whl
+      sha256: 8f885ae0e8311ec45a943d5db2af77cc2b44d3c5ba4d6a053012a67e861ca829
 
   - name: imagemagick
     buildsystem: autotools
