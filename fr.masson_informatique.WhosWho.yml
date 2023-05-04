@@ -34,14 +34,14 @@ modules:
       --prefix=${FLATPAK_DEST} "scikit-build" --no-build-isolation
     sources:
     - type: file
-      url: https://files.pythonhosted.org/packages/42/93/02ff150ac63a8fb9558897ef3327598711f7d6d060093d91db22c4de3504/scikit_build-0.14.1-py2.py3-none-any.whl
-      sha256: 410f9103041f55c64f887150424b80b847794237610b99c17db6f4dcde1e3cc1
+      url: https://files.pythonhosted.org/packages/d2/a3/01d72e506afcf919c191de587c3f77ee7355b0b28951eb1fbc2753bc9d77/scikit_build-0.17.3-py3-none-any.whl
+      sha256: 4bf75dcf628513badb7cc8a926414155ab3db3273f5f8c243092e7a2bdbdd5c9
     - type: file
-      url: https://files.pythonhosted.org/packages/e1/54/d08d1ad53788515392bec14d2d6e8c410bffdc127780a9a4aa8e6854d502/distro-1.7.0-py3-none-any.whl
-      sha256: d596311d707e692c2160c37807f83e3820c5d539d5a83e87cfb6babd8ba3a06b
+      url: https://files.pythonhosted.org/packages/f4/2c/c90a3adaf0ddb70afe193f5ebfb539612af57cffe677c3126be533df3098/distro-1.8.0-py3-none-any.whl
+      sha256: 99522ca3e365cac527b44bde033f64c6945d90eb9f769703caaec52b09bbd3ff
     - type: file
-      url: https://files.pythonhosted.org/packages/05/8e/8de486cbd03baba4deef4142bd643a3e7bbe954a784dc1bb17142572d127/packaging-21.3-py3-none-any.whl
-      sha256: ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522
+      url: https://files.pythonhosted.org/packages/ab/c3/57f0601a2d4fe15de7a553c00adbc901425661bf048f2a22dfc500caf121/packaging-23.1-py3-none-any.whl
+      sha256: 994793af429502c4ea2ebf6bf664629d07c1a9fe974af92966e4b8d2df7edc61
     - type: file
       url: https://files.pythonhosted.org/packages/6c/10/a7d0fa5baea8fe7b50f448ab742f26f52b80bfca85ac2be9d35cdd9a3246/pyparsing-3.0.9-py3-none-any.whl
       sha256: 5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc
