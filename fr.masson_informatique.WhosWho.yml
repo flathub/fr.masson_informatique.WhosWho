@@ -54,7 +54,6 @@ modules:
   - name: python3-numpy
     buildsystem: simple
     build-commands:
-    - rm pyproject.toml
     - pip3 install --prefix=${FLATPAK_DEST} .
     sources:
     - type: archive
