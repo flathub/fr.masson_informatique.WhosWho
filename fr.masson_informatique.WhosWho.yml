@@ -54,7 +54,7 @@ modules:
   - name: python3-cython
     buildsystem: simple
     build-commands:
-    - pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} .
+    - pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} cython
     sources:
     - type: file
       url: https://files.pythonhosted.org/packages/d5/f7/2fdd9205a2eedee7d9b0abbf15944a1151eb943001dbdc5233b1d1cfc34e/Cython-3.0.10.tar.gz
