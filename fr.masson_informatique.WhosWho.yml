@@ -51,10 +51,10 @@ modules:
 
   # needed for numpy
   # recipe copied from https://github.com/flathub/org.dash.electrum.electrum_dash/blob/dbb73e1b679174f27b5589536be8c365fc49c0cc/python3-cython.json#L4
-  - name: cython
+  - name: python3-cython
     buildsystem: simple
     build-commands:
-    - pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} cython
+    - pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} .
     sources:
     - type: file
       url: https://files.pythonhosted.org/packages/d5/f7/2fdd9205a2eedee7d9b0abbf15944a1151eb943001dbdc5233b1d1cfc34e/Cython-3.0.10.tar.gz
