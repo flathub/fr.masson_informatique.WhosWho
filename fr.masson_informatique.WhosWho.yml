@@ -1,6 +1,6 @@
 app-id: fr.masson_informatique.WhosWho
 runtime: org.gnome.Platform
-runtime-version: '44'
+runtime-version: '46'
 sdk: org.gnome.Sdk
 command: whoswho
 cleanup:
