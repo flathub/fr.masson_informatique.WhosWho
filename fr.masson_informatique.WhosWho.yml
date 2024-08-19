@@ -242,4 +242,4 @@ modules:
     sources:
       - type: archive
         url: https://framagit.org/Yvan-Masson/WhosWho/-/archive/v2.1/WhosWho-v2.1.tar.gz
-        sha256: 1cbef3e511050ef0796270e83b6a6fb70324bded0e283f6cbe0cdd3962057a7a
+        sha256: e7bc91439d94a6a978295bd58cd4247318e3365dcc29bd0f18e42ee8d0dc9001
