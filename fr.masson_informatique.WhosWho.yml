@@ -1,6 +1,6 @@
 app-id: fr.masson_informatique.WhosWho
 runtime: org.gnome.Platform
-runtime-version: '44'
+runtime-version: '46'
 sdk: org.gnome.Sdk
 command: whoswho
 cleanup:
@@ -241,5 +241,5 @@ modules:
       - pip3 install --prefix=${FLATPAK_DEST} --no-deps .
     sources:
       - type: archive
-        url: https://framagit.org/Yvan-Masson/WhosWho/-/archive/v2.0/WhosWho-v2.0.tar.gz
-        sha256: b950ec2fe28bd14618a2d2a7ad0b0c315a5c44ab4c79f3db6bfa9df5b7210b7d
+        url: https://framagit.org/Yvan-Masson/WhosWho/-/archive/v2.1/WhosWho-v2.1.tar.gz
+        sha256: e7bc91439d94a6a978295bd58cd4247318e3365dcc29bd0f18e42ee8d0dc9001
