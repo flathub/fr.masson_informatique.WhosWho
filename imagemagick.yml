@@ -1,0 +1,30 @@
+---
+
+name: imagemagick
+buildsystem: autotools
+config-opts:
+  - "--enable-shared=no"
+  - "--enable-static=yes"
+  - "--disable-docs"
+  - "--without-magick-plus-plus"
+  - "--without-perl"
+  - "--without-bzlib"
+  - "--without-dps"
+  - "--without-fpx"
+  - "--without-jbig"
+  - "--without-jp2"
+  - "--without-lcms"
+  - "--without-lzma"
+  - "--without-png"
+  - "--without-tiff"
+  - "--without-wmf"
+  - "--without-xml"
+  - "--without-zlib"
+  - "--without-x"
+sources:
+  - type: archive
+    url: https://imagemagick.org/archive/releases/ImageMagick-7.1.2-19.tar.xz
+    sha256: 4ffd17387d0b55c1f7465ea2baf39e1404afcfe7321ee66430741045d282fc6a
+cleanup:
+  - "/bin/MagickCore-config"
+  - "/bin/MagickWand-config"

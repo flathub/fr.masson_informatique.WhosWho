@@ -1,3 +1,5 @@
+---
+
 app-id: fr.masson_informatique.WhosWho
 runtime: org.gnome.Platform
 runtime-version: '50'
@@ -14,242 +16,26 @@ finish-args:
   - --filesystem=xdg-run/gvfsd
 
 modules:
-  - name: python3-chardet
-    buildsystem: simple
-    build-commands:
-    - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-      --prefix=${FLATPAK_DEST} "chardet" --no-build-isolation
-    sources:
-    - type: file
-      url: https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl
-      sha256: e1cf59446890a00105fe7b7912492ea04b6e6f06d4b742b2c788469e34c82970
-    cleanup:
-    - "/bin/*"
-
-  # needed at least for python3-numpy
-  - name: setuptools
-    buildsystem: simple
-    build-commands:
-    - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-      --prefix=${FLATPAK_DEST} "chardet" --no-build-isolation
-    sources:
-    - type: file
-      url: https://files.pythonhosted.org/packages/9d/76/f789f7a86709c6b087c5a2f52f911838cad707cc613162401badc665acfe/setuptools-82.0.1-py3-none-any.whl
-      sha256: a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb
-
+  # needed to build python3-Pillow
+  - python3-pybind11.json
+  # needed to build python3-numpy
+  - python3-meson-python.json
   # needed to build opencv
-  - name: python3-scikit-build
-    buildsystem: simple
-    build-commands:
-    - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-      --prefix=${FLATPAK_DEST} "scikit-build" --no-build-isolation
-    sources:
-    - type: file
-      url: https://files.pythonhosted.org/packages/fa/af/b3ef8fe0bb96bf7308e1f9d196fc069f0c75d9c74cfaad851e418cc704f4/scikit_build-0.17.6-py3-none-any.whl
-      sha256: 18bd55e81841106eec93f30a297df4f301003791c41be46ef6428d58bd42d6b3
-    - type: file
-      url: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
-      sha256: 7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
-    - type: file
-      url: https://files.pythonhosted.org/packages/49/df/1fceb2f8900f8639e278b056416d49134fb8d84c5942ffaa01ad34782422/packaging-24.0-py3-none-any.whl
-      sha256: 2ddfb553fdf02fb784c234c7ba6ccc288296ceabec964ad2eae3777778130bc5
-    - type: file
-      url: https://files.pythonhosted.org/packages/9d/ea/6d76df31432a0e6fdf81681a895f009a4bb47b3c39036db3e1b528191d52/pyparsing-3.1.2-py3-none-any.whl
-      sha256: f9db75911801ed778fe61bb643079ff86601aca99fcae6345aa67292038fb742
-    - type: file
-      url: https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl
-      sha256: 939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc
+  - python3-scikit-build.json
+  - python3-numpy.json
+  # WhosWho dependencies
+  - python3-chardet.json
+  - python3-Pillow.json
+  - python3-Willow.json
+  - opencv.yml
+  - imagemagick.yml
 
-  # needed for opencv
-  # recipe copied from Inkscape (https://github.com/flathub/org.inkscape.Inkscape/blob/483813e5626c5660f0ca1d1f505a92824e7f02f6/python3-numpy.json)
-  - name: python3-numpy
-    buildsystem: simple
-    build-commands:
-    - rm pyproject.toml
-    - pip3 install --prefix=${FLATPAK_DEST} .
-    sources:
-    - type: archive
-      url: https://files.pythonhosted.org/packages/2c/d4/590ae7df5044465cc9fa2db152ae12468694d62d952b1528ecff328ef7fc/numpy-1.24.3.tar.gz
-      sha256: ab344f1bf21f140adab8e47fdbc7c35a477dc01408791f8ba00d018dd0bc5155
-    cleanup:
-    - "/bin/*"
-
-  # opencv flags reference: https://docs.opencv.org/4.x/db/d05/tutorial_config_reference.html
-  - name: opencv
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-    - "-DBUILD_EXAMPLES=OFF"
-    - "-DBUILD_TESTS=OFF"
-    - "-DBUILD_DOCS=OFF"
-    - "-DBUILD_PERF_TESTS=OFF"
-    - "-DBUILD_NEW_PYTHON_SUPPORT=OFF"
-    - "-DBUILD_ZLIB=OFF"
-    - "-DOPENCV_BUILD_3RDPARTY_LIBS=OFF"
-    - "-DINSTALL_C_EXAMPLES=OFF"
-    - "-DINSTALL_PYTHON_EXAMPLES=OFF"
-    - "-DBUILD_opencv_core=ON"
-    - "-DBUILD_opencv_imgproc=ON"
-    - "-DBUILD_opencv_imgcodecs=OFF"
-    - "-DBUILD_opencv_objdetect=ON"
-    - "-DBUILD_opencv_calib3d=ON"
-    - "-DBUILD_opencv_features2d=ON"
-    - "-DBUILD_opencv_flann=ON"
-    - "-DBUILD_opencv_dnn=ON"
-    - "-DBUILD_opencv_photo=OFF"
-    - "-DBUILD_opencv_java=OFF"
-    - "-DBUILD_opencv_java_bindings_generator=OFF"
-    - "-DBUILD_opencv_js=OFF"
-    - "-DBUILD_opencv_python2=OFF"
-    - "-DBUILD_opencv_python3=ON"
-    - "-DBUILD_opencv_python_bindings_generator=ON"
-    - "-DBUILD_opencv_shape=OFF"
-    - "-DBUILD_opencv_highgui=OFF"
-    - "-DBUILD_opencv_superres=OFF"
-    - "-DBUILD_opencv_stitching=OFF"
-    - "-DBUILD_opencv_videostab=OFF"
-    - "-DBUILD_opencv_videoio=OFF"
-    - "-DBUILD_opencv_video=OFF"
-    - "-DBUILD_opencv_apps=OFF"
-    - "-DBUILD_opencv_gapi=OFF"
-    - "-DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.9.so"
-    - "-DWITH_PROTOBUF=ON"
-    - "-DWITH_1394=OFF"
-    - "-DWITH_VTK=OFF"
-    - "-DWITH_EIGEN=OFF"
-    - "-DWITH_FFMPEG=OFF"
-    - "-DWITH_GSTREAMER=OFF"
-    - "-DWITH_GTK=OFF"
-    - "-DWITH_IPP=OFF"
-    - "-DWITH_JASPER=OFF"
-    - "-DWITH_JPEG=ON"
-    - "-DWITH_MATLAB=OFF"
-    - "-DWITH_OPENJPEG=OFF"
-    - "-DWITH_OPENEXR=OFF"
-    - "-DWITH_OPENNI=OFF"
-    - "-DWITH_OPENMP=OFF"
-    - "-DWITH_PNG=OFF"
-    - "-DWITH_PVAPI=OFF"
-    - "-DWITH_QT=OFF"
-    - "-DWITH_QUICKTIME=OFF"
-    - "-DWITH_QT_OPENGL=OFF"
-    - "-DWITH_TBB=OFF"
-    - "-DWITH_TIFF=OFF"
-    - "-DWITH_UNICAP=OFF"
-    - "-DWITH_V4L=OFF"
-    - "-DWITH_VFW=OFF"
-    - "-DWITH_VIDEOINPUT=OFF"
-    - "-DWITH_XINE=OFF"
-    - "-DWITH_VA_INTEL=OFF"
-    - "-DWITH_GPHOTO2=OFF"
-    - "-DWITH_WEBP=OFF"
-    - "-DWITH_IMGCODEC_HDR=OFF"
-    - "-DWITH_IMGCODEC_SUNRASTER=OFF"
-    - "-DWITH_IMGCODEC_PXM=OFF"
-    - "-DWITH_CUDA=OFF"
-    - "-DWITH_CUFFT=OFF"
-    - "-DWITH_CUBLAS=OFF"
-    - "-DWITH_NVCUVID=OFF"
-    - "-DWITH_OPENCL=OFF"
-    - "-DWITH_OPENCL_SVM=OFF"
-    - "-DWITH_OPENCLAMDFFT=OFF"
-    - "-DWITH_OPENCLAMDBLAS=OFF"
-    - "-DWITH_OPENJPEG=OFF"
-    - "-DCV_ENABLE_INTRINSICS=OFF"
-    - "-DCV_DISABLE_OPTIMIZATION=OFF"
-    - "-DCV_TRACE=OFF"
-    sources:
-    - type: git
-      url: https://github.com/Itseez/opencv.git
-      tag: 4.9.0
-      commit: dad8af6b17f8e60d7b95a1203a1b4d22f56574cf
-    cleanup:
-    - "/bin/*"
-    - "/share/licenses/*"
-    - "/share/opencv4/haarcascades/haarcascade_eye_tree_eyeglasses.xml"
-    - "/share/opencv4/haarcascades/haarcascade_eye.xml"
-    - "/share/opencv4/haarcascades/haarcascade_frontalcatface_extended.xml"
-    - "/share/opencv4/haarcascades/haarcascade_frontalcatface.xml"
-    - "/share/opencv4/haarcascades/haarcascade_frontalface_alt_tree.xml"
-    - "/share/opencv4/haarcascades/haarcascade_frontalface_alt.xml"
-    - "/share/opencv4/haarcascades/haarcascade_frontalface_default.xml"
-    - "/share/opencv4/haarcascades/haarcascade_fullbody.xml"
-    - "/share/opencv4/haarcascades/haarcascade_lefteye_2splits.xml"
-    - "/share/opencv4/haarcascades/haarcascade_licence_plate_rus_16stages.xml"
-    - "/share/opencv4/haarcascades/haarcascade_lowerbody.xml"
-    - "/share/opencv4/haarcascades/haarcascade_profileface.xml"
-    - "/share/opencv4/haarcascades/haarcascade_righteye_2splits.xml"
-    - "/share/opencv4/haarcascades/haarcascade_russian_plate_number.xml"
-    - "/share/opencv4/haarcascades/haarcascade_smile.xml"
-    - "/share/opencv4/haarcascades/haarcascade_upperbody.xml"
-    - "/share/opencv4/lbpcascades/lbpcascade_frontalcatface.xml"
-    - "/share/opencv4/lbpcascades/lbpcascade_frontalface_improved.xml"
-    - "/share/opencv4/lbpcascades/lbpcascade_frontalface.xml"
-    - "/share/opencv4/lbpcascades/lbpcascade_profileface.xml"
-    - "/share/opencv4/lbpcascades/lbpcascade_silverware.xml"
-    - "/share/opencv4/valgrind.supp"
-    - "/share/opencv4/valgrind_3rdparty.supp"
-
-  - name: python3-Pillow
-    buildsystem: simple
-    build-commands:
-    - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-      --prefix=${FLATPAK_DEST} "Pillow" --no-build-isolation
-    sources:
-    - type: file
-      url: https://files.pythonhosted.org/packages/ef/43/c50c17c5f7d438e836c169e343695534c38c77f60e7c90389bd77981bc21/pillow-10.3.0.tar.gz
-      sha256: 9d2455fbf44c914840c793e89aa82d0e1763a14253a000743719ae5946814b2d
-
-  - name: python3-Willow
-    buildsystem: simple
-    build-commands:
-    - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-      --prefix=${FLATPAK_DEST} "Willow" --no-build-isolation
-    sources:
-    - type: file
-      url: https://files.pythonhosted.org/packages/95/7a/a48cf90bbf226f793d830c3bbdb7f0c4aa8087c08ce84cc864a1c882a457/willow-1.8.0-py3-none-any.whl
-      sha256: 48ccf5ce48ccd29c37a32497cd7af50983f8570543c4de2988b15d583efc66be
-    - type: file
-      url: https://files.pythonhosted.org/packages/18/79/1b8fa1bb3568781e84c9200f951c735f3f157429f44be0495da55894d620/filetype-1.2.0-py2.py3-none-any.whl
-      sha256: 7ce71b6880181241cf7ac8697a2f1eb6a8bd9b429f7ad6d27b8db9ba5f1c2d25
-    - type: file
-      url: https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl
-      sha256: a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61
-
-  - name: imagemagick
-    buildsystem: autotools
-    config-opts:
-    - "--enable-shared=no"
-    - "--enable-static=yes"
-    - "--disable-docs"
-    - "--without-magick-plus-plus"
-    - "--without-perl"
-    - "--without-bzlib"
-    - "--without-dps"
-    - "--without-fpx"
-    - "--without-jbig"
-    - "--without-jp2"
-    - "--without-lcms"
-    - "--without-lzma"
-    - "--without-png"
-    - "--without-tiff"
-    - "--without-wmf"
-    - "--without-xml"
-    - "--without-zlib"
-    - "--without-x"
-    sources:
-    - type: archive
-      url: https://imagemagick.org/archive/releases/ImageMagick-7.1.1-32.tar.xz
-      sha256: e7a6b98f105e6b0f4f1b1e1d72f002262cc1a375b8c05b5f9e8dd2be438897d2
-    cleanup:
-    - "/bin/MagickCore-config"
-    - "/bin/MagickWand-config"
 
   - name: WhosWho
     buildsystem: simple
     build-commands:
       - ./build-translations.py
-      - pip3 install --prefix=${FLATPAK_DEST} --no-deps .
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} --no-deps --no-build-isolation .
     sources:
       - type: archive
         url: https://framagit.org/Yvan-Masson/WhosWho/-/archive/v2.2/WhosWho-v2.3.tar.gz
