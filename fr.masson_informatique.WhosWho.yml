@@ -1,13 +1,13 @@
----
-
 app-id: fr.masson_informatique.WhosWho
 runtime: org.gnome.Platform
 runtime-version: '50'
 sdk: org.gnome.Sdk
 command: whoswho
 cleanup:
-  - "/bin/distro"
-  - "/include/*"
+  - /include
+  - /lib/cmake
+  - "*.la"
+  - "*.a"
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -22,6 +22,7 @@ modules:
   - python3-meson-python.json
   # needed to build opencv
   - python3-scikit-build.json
+  # opencv dependencies
   - python3-numpy.json
   # WhosWho dependencies
   - python3-chardet.json
