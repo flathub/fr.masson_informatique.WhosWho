@@ -6,6 +6,8 @@ command: whoswho
 cleanup:
   - /include
   - /lib/cmake
+  - /lib/python3.*/*/numpy/tests
+  - /lib/python3.*/*/numpy/*/tests
   - "*.la"
   - "*.a"
 finish-args:
