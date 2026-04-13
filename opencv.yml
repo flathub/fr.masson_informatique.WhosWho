@@ -92,7 +92,6 @@ sources:
     commit: fe38fc608f6acb8b68953438a62305d8318f4fcd
 cleanup:
   - "/bin/*"
-  - "/share/licenses/*"
   - "/share/opencv4/haarcascades/haarcascade_eye_tree_eyeglasses.xml"
   - "/share/opencv4/haarcascades/haarcascade_eye.xml"
   - "/share/opencv4/haarcascades/haarcascade_frontalcatface_extended.xml"
